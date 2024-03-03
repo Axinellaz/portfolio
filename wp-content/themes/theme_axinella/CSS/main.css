@@ -27,7 +27,6 @@ header{
 }
 header nav {
     padding: 20px 0; /* Espacement intérieur du menu */
-    background-color: var(--second-color);
 }
 
 nav{
@@ -39,26 +38,60 @@ nav{
 }
 /* ---  Logo Menu Navigation --- */
 header nav h1 {
-    margin: 0; /* Supprime la marge autour du titre */
-    font-size: 24px; /* Taille de police du titre */
+    margin: 0; /* Supprime la marge autour du titre */  
+}
+
+.logo_nav{
+    width: 30px;
+    height: 30px;
 }
 /* ---  Liens Menu  --- */
 .primary-menu{
-    width: 13rem;
+    width: 31rem;
     display: flex;
-    gap: 1rem;
-    justify-content: space-around;
+    padding: 0;
+    z-index: 1;
 }
 
 .primary-menu li{
-    list-style: none;
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .primary-menu li a{
+    display: none; 
     text-decoration: none;
-    color: var(--black-color);
+    padding: 10px 15px;
+    color: var(--second-color);
+   border: solid 2px var(--second-color);
+    border-radius: 30px; /* Bordure ovale */
+}
+/*  --- Menu Burger Flower Icon --- */
+.menu-icon {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    position: relative;
 }
 
+.menu-icon img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.primary-menu.open li a{
+    display: flex;
+}
+.menu-icon.hide img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon img.hide {
+    display: none; /* Cacher la deuxième fleur par défaut */
+}
 /*  --- PAGE ACCUEIL / BANNER ---  */
 .banner{
     width: 100%;
@@ -70,6 +103,40 @@ header nav h1 {
     background-image: url('../imgs/background_banner.jpg');
      background-size: cover; /* Redimensionne l'image pour couvrir toute la zone de l'arrière-plan */
     background-position: center; /* Centre l'image dans la zone */
-    transform: perspective(1000px) rotateX(10deg);
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.3);
+    
 }
+
+/* --- SECTION PROJETS ---*/
+
+.project {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 400px; /* Ajustez selon vos besoins */
+      background: url('votre_image.jpg') center/cover;
+      transition: transform 0.5s;
+    }
+    .project:hover {
+      transform: scale(1.1);
+    }
+    .project .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      width: 100%;
+      transition: opacity 0.5s;
+    }
+    .project:hover .content {
+      opacity: 1;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 5px 0;
+    }
+    p {
+      font-size: 14px;
+      margin: 0;
+    }

@@ -14,12 +14,19 @@
         </div>
         <nav role="navigation" aria-label="<?php _e('Menu', 'text-domain'); ?>">
 
-            <h1>LOGO </h1>
+            <h1>
+                <img class="logo_nav" src="wp-content/themes/theme_axinella/imgs/logo_axinella_portfolio.png" alt="Logo du site" >
+            </h1>
 
             <div class="container_nav_animation">
             
             </div>
-            
+
+            <div class="menu-icon" id="menuIcon">
+                <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger.png;' ?>" alt="Fleur">
+                <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger_close.png;' ?>" alt="Fleur de fermeture" class="hide">
+            </div>
+
             <?php
                 $args = array(
                     'theme_location' => 'primary', 
