@@ -28,3 +28,37 @@ menuLinks.forEach(link => {
         link.style.fontSize = ''; // Réinitialisez la taille de la police
     });
 });
+
+// Projet Section
+document.querySelectorAll('.projet').forEach(projet => {
+    projet.addEventListener('mouseenter', () => {
+        projet.querySelector('.contenu-survol').style.opacity = '1';
+        projet.style.opacity = '0.5'; /* Réduire l'opacité du projet lors du survol */
+    });
+    projet.addEventListener('mouseleave', () => {
+        projet.querySelector('.contenu-survol').style.opacity = '0';
+        projet.style.opacity = '1'; /* Rétablir l'opacité du projet lorsque le survol est terminé */
+    });
+});
+
+// Section Contact - Effet Bulles de Savon
+// Fonction pour générer des bulles de savon
+function generateBubbles() {
+    const section = document.getElementById('contact');
+    console.log(section);
+    const sectionRect = section.getBoundingClientRect(); // Rectangle de la section
+    for (let i = 0; i < 15; i++) { // Générer 10 bulles
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        const x = Math.random() * (sectionRect.width - 40); // Position horizontale aléatoire dans la section
+        const y = Math.random() * (sectionRect.height - 40); // Position verticale aléatoire dans la section
+        bubble.style.left = x + 'px';
+        bubble.style.top = y + 'px';
+        section.appendChild(bubble);
+    }
+}
+
+// Générer les bulles lorsque le document est chargé
+document.addEventListener('DOMContentLoaded', generateBubbles);
+
+

@@ -3,12 +3,27 @@ html {
     font-size: 16px; /* Taille de police de base*/
 }
 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: var(--white-color);
     
+}
+/* --- Police Ecriture --- */
+@font-face {
+    font-family: 'Dancing_Script';
+    src: url('../fonts/DancingScript-VariableFont_wght.ttf') format('truetype'); 
+
+}
+
+@font-face {
+    font-family: 'Raleway-italic';
+    src: url('../fonts/Raleway-Italic-VariableFont_wght.ttf') format('truetype'); 
+
+    font-family: 'Raleway';
+    src: url('../fonts/Raleway-VariableFont_wght.ttf') format('truetype'); 
 }
 
 /*  ---  Couleurs site ---  */
@@ -18,33 +33,37 @@ html {
   --white-color: #fff;
   --primary-color: #9B659F;
   --second-color:#DFC8E0;
+  --purple-dark: #632068;
 
 }
 
 /*  --- HEADER ---  */
 header{
     overflow-x: hidden;
-}
-header nav {
-    padding: 20px 0; /* Espacement intérieur du menu */
+    position: fixed;
+    top: 5%;
+    right: 0;
+    bottom: 0;
+    width: 10%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+   /* padding: 20px 0;  Espacement intérieur du menu */
+    z-index: 1000;
 }
 
 nav{
-    width: 100%;
-    height: 15vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-}
-/* ---  Logo Menu Navigation --- */
-header nav h1 {
-    margin: 0; /* Supprime la marge autour du titre */  
+     background-color: #222; /* Couleur de fond pour les liens du menu */
+            width: 100%; /* Ajuster la largeur pour remplir la barre de navigation */
+            margin-top: 10px; 
 }
 
-.logo_nav{
-    width: 30px;
-    height: 30px;
-}
+
 /* ---  Liens Menu  --- */
 .primary-menu{
     width: 31rem;
@@ -66,7 +85,7 @@ header nav h1 {
    border: solid 2px var(--second-color);
     border-radius: 30px; /* Bordure ovale */
 }
-/*  --- Menu Burger Flower Icon --- */
+/*  --- Menu Burger Flower & Menu Icon --- */
 .menu-icon {
     cursor: pointer;
     width: 45px;
@@ -92,6 +111,60 @@ header nav h1 {
 .menu-icon img.hide {
     display: none; /* Cacher la deuxième fleur par défaut */
 }
+
+/* --- Fleches Menu Navigation --- */
+.arrow-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-down {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent; /* Largeur et couleur de la partie gauche de la flèche */
+    border-right: 20px solid transparent; /* Largeur et couleur de la partie droite de la flèche */
+    border-top: 30px solid; /* Hauteur de la partie haute de la flèche */
+    margin: 10px; /* Marge entre les flèches */
+    transition: transform 0.3s; /* Animation de transition */
+    cursor: pointer;
+    background: linear-gradient(to bottom, #9C27B0, #03A9F4); /* Dégradé linéaire du violet pastel au bleu pastel */
+}
+
+.arrow-down::before,
+.arrow-down::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid;
+    filter: brightness(0.8);
+    z-index: -1;
+}
+
+.arrow-down::before {
+    transform: rotate(180deg); /* Rotation pour créer une flèche inversée */
+}
+
+.arrow-down:hover {
+    transform: translateY(5px); /* Déplacement vers le bas au survol */
+}
+
+.container_link_and_arrow_projet {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container_link_and_arrow_projet img {
+            width: 20px; /* Ajuster la taille de l'icône de flèche */
+        }
 /*  --- PAGE ACCUEIL / BANNER ---  */
 .banner{
     width: 100%;
@@ -102,41 +175,279 @@ header nav h1 {
     height: 100vh;
     background-image: url('../imgs/background_banner.jpg');
      background-size: cover; /* Redimensionne l'image pour couvrir toute la zone de l'arrière-plan */
-    background-position: center; /* Centre l'image dans la zone */
-    
+    background-position: center;  
+}
+/* --- SECTION ABOUT ME --- */
+.about-me{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
 }
 
+.about-me-content{
+    flex-direction: column;
+    display: flex;
+    gap: 2rem;
+
+}
+.about-me-content h2{
+    font-family: 'Dancing_Script', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    border: solid 3px ;
+    color: var(--primary-color);
+}
+
+.writing-effect p{
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    color: var(--second-color);
+}
+
+.description_aboume{
+        max-width: 35rem;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Effet Back Section About Me */
+#aboutme {
+    position: relative;
+    overflow: hidden;
+}
+
+#aboutme::before, #aboutme::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to bottom, #4c004c, #000);
+    opacity: 0.3;
+    animation: abstractShapes 25s linear infinite;
+}
+
+#aboutme::before {
+    left: 0;
+    transform-origin: left;
+}
+
+#aboutme::after {
+    right: 0;
+    transform-origin: right;
+}
+
+@keyframes abstractShapes {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        transform: scale(1);
+    }
+    25% {
+        clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+        transform: scale(1.1);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
+        transform: scale(1);
+    }
+    75% {
+        clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+        transform: scale(1.1);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        transform: scale(1);
+    }
+}
+
+
+/* --- SECTION CONTACT --- */ 
+.contact{
+    position: relative;
+    margin: 30px auto;
+}
+.contact-form {
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 20px; 
+    background-color: #f5f5fa; 
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1); 
+}
+
+.contact-form h2 {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: var(--purple-dark);
+    font-family: 'Dancing_Script', sans-serif; 
+}
+
+.wpcf7{
+    z-index: 1;
+    padding: 10px;
+    border: solid 3px var(--black-color);
+    border-radius: 30px;
+}
+.contact-form label {
+    display: block;
+    color: var(--primary-color);
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 15px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: calc(100% - 20px); /* Réduire la largeur */
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #c5cae9; /* Bordure inférieure pastel */
+    background-color: transparent; /* Fond transparent */
+    margin-bottom: 20px;
+    border-radius: 15px; /* Arrondir davantage les bordures */
+    transition: border-color 0.3s ease; /* Transition pour l'effet moderne */
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-bottom-color: #6a2c70; /* Changement de couleur de bordure au focus */
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form input[type="submit"] {
+    width: calc(100% - 20px); /* Réduire la largeur */
+    padding: 12px;
+    border: none;
+    border-radius: 15px; /* Arrondir davantage les bordures */
+    background-color: #6a2c70; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur de texte du bouton */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition pour l'effet moderne */
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #542461; /* Changement de couleur au survol */
+}
+
+/* Effet de bulle de savon */
+.bubble {
+    position: absolute;
+    background-color: var(--second-color); /* Couleur de la bulle */
+    width: 50px;
+    height: 50px;
+    opacity: 0.7;
+    border-radius: 50%; /* Arrondir la forme */
+    animation: floatBubble 5s ease-in-out infinite; /* Animation de flottement */
+}
+
+/* Animation de flottement */
+@keyframes floatBubble {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 /* --- SECTION PROJETS ---*/
 
-.project {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: 400px; /* Ajustez selon vos besoins */
-      background: url('votre_image.jpg') center/cover;
-      transition: transform 0.5s;
-    }
-    .project:hover {
-      transform: scale(1.1);
-    }
-    .project .content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      width: 100%;
-      transition: opacity 0.5s;
-    }
-    .project:hover .content {
-      opacity: 1;
-    }
-    h2 {
-      font-size: 24px;
-      margin: 5px 0;
-    }
-    p {
-      font-size: 14px;
-      margin: 0;
-    }
+.projets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.projet {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: opacity 0.3s;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    height: 90vh;
+    width: 200px;
+    margin: 20px 10px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.contenu-projet {
+    height: 100%;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.projet:hover .contenu-projet {
+    transform: rotateY(180deg);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    display: none;
+}
+
+.projet:hover .overlay {
+    display: block;
+}
+
+.contenu-survol {
+
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Ajout d'un fond semi-transparent */
+    padding: 10px;
+    transform: translateY(100%); /* Cacher le contenu en le déplaçant vers le bas */
+    transition: transform 0.5s;
+}
+
+.projet:hover .contenu-survol {
+    opacity: 1;
+     transform: translateY(0); /* Afficher le contenu en le déplaçant vers le haut */
+}
+
+.image-projet img {
+    max-width: 100%;
+    height: auto;
+}
+
+.projet_title {
+    font-size: 5rem;
+    font-family: 'Dancing_Script', sans-serif;
+    writing-mode: vertical-lr; /* Afficher le titre verticalement */
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: -15px; /* Ajustement pour s'aligner avec le contenu */
+}
