@@ -3,12 +3,10 @@ html {
     font-size: 16px; /* Taille de police de base*/
 }
 
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--white-color);
     
 }
 /* --- Police Ecriture --- */
@@ -34,6 +32,7 @@ html {
   --primary-color: #9B659F;
   --second-color:#DFC8E0;
   --purple-dark: #632068;
+--purple-light:#BD94C0;
 
 }
 
@@ -41,49 +40,55 @@ html {
 header{
     overflow-x: hidden;
     position: fixed;
-    top: 5%;
-    right: 0;
+    top: 3rem;
+    right: 1rem;
     bottom: 0;
-    width: 10%;
-    background-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3rem;
-   /* padding: 20px 0;  Espacement intérieur du menu */
     z-index: 1000;
 }
 
+
 nav{
+    position: fixed;
+    right: -5rem;
+    padding: 30px 10px;
     display: flex;
     flex-direction: column;
+    border-radius: 50px;
+    border: var(--purple-dark) 3px dashed;
     align-items: center;
-     background-color: #222; /* Couleur de fond pour les liens du menu */
-            width: 100%; /* Ajuster la largeur pour remplir la barre de navigation */
-            margin-top: 10px; 
+    transition: right 0.3s ease;
+    background-image: url('../imgs/back_menu_nav.jpg');
 }
-
 
 /* ---  Liens Menu  --- */
 .primary-menu{
-    width: 31rem;
     display: flex;
-    padding: 0;
-    z-index: 1;
+    gap: 4rem;
+    width: 9rem;
+    flex-direction: column;
+    overflow-x: hidden;
+    height: 50vh;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
 
 .primary-menu li{
-    display: inline-block;
-    margin-right: 20px;
+    list-style: none;
 }
-
 .primary-menu li a{
-    display: none; 
     text-decoration: none;
     padding: 10px 15px;
     color: var(--second-color);
    border: solid 2px var(--second-color);
-    border-radius: 30px; /* Bordure ovale */
+    border-radius: 30px; 
+    background-color: var(--purple-light);
 }
 /*  --- Menu Burger Flower & Menu Icon --- */
 .menu-icon {
@@ -93,78 +98,61 @@ nav{
     position: relative;
 }
 
-.menu-icon img {
-    width: 100%;
-    height: auto;
+.menu-icon img{
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Afficher la deuxième fleur par défaut */
+#flower-icon img:last-child {
+    display: none;
+}
+
+/* Animation de rotation au survol */
+#flower-icon:hover img:first-child {
+    transform: rotate(180deg);
     transition: transform 0.3s ease;
 }
 
-.primary-menu.open li a{
-    display: flex;
-}
-.menu-icon.hide img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
+/* Menu burger */
+
+.open:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px); /* Rotation et translation pour la première barre */
 }
 
-.menu-icon img.hide {
-    display: none; /* Cacher la deuxième fleur par défaut */
+.open:nth-child(2) {
+    opacity: 0; /* Masquer la deuxième barre */
 }
 
-/* --- Fleches Menu Navigation --- */
-.arrow-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.open:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px); /* Rotation et translation pour la troisième barre */
 }
-
-.arrow-down {
-    position: relative;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent; /* Largeur et couleur de la partie gauche de la flèche */
-    border-right: 20px solid transparent; /* Largeur et couleur de la partie droite de la flèche */
-    border-top: 30px solid; /* Hauteur de la partie haute de la flèche */
-    margin: 10px; /* Marge entre les flèches */
-    transition: transform 0.3s; /* Animation de transition */
-    cursor: pointer;
-    background: linear-gradient(to bottom, #9C27B0, #03A9F4); /* Dégradé linéaire du violet pastel au bleu pastel */
-}
-
-.arrow-down::before,
-.arrow-down::after {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: -20px;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 30px solid;
-    filter: brightness(0.8);
-    z-index: -1;
-}
-
-.arrow-down::before {
-    transform: rotate(180deg); /* Rotation pour créer une flèche inversée */
-}
-
-.arrow-down:hover {
-    transform: translateY(5px); /* Déplacement vers le bas au survol */
-}
-
-.container_link_and_arrow_projet {
+.menu-burger {
+            cursor: pointer;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: space-between;
+            height: 20px;
+            width: 30px;
         }
-        
-        .container_link_and_arrow_projet img {
-            width: 20px; /* Ajuster la taille de l'icône de flèche */
+
+        .bar {
+            background-color: var(--purple-dark);
+            height: 3px;
+            width: 100%;
+            transition: all 0.3s ease;
         }
+
+        .menu {
+            display: none;
+        }
+
+        .menu-open {
+            display: flex;
+            top: 12rem;
+            right: 1rem;
+        }
+
 /*  --- PAGE ACCUEIL / BANNER ---  */
 .banner{
     width: 100%;
@@ -175,8 +163,43 @@ nav{
     height: 100vh;
     background-image: url('../imgs/background_banner.jpg');
      background-size: cover; /* Redimensionne l'image pour couvrir toute la zone de l'arrière-plan */
-    background-position: center;  
+    background-position: center; 
+    overflow-x: hidden; 
 }
+
+.items_banner h1{
+    font-family: 'Dancing_Script', sans-serif;
+    font-size: 15rem;
+    text-align: center;
+    overflow-x: hidden;
+    -webkit-text-stroke: 1px var(--white-color); /* Pour les navigateurs basés sur WebKit */
+    color: var(--purple-dark) /* Couleur du texte */
+}
+
+/* aNIMATION TITLE H1 */
+.animate-text {
+    overflow: hidden;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .show {
+      opacity: 1;
+    }
+
+     @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+    .animate-text {
+      animation: bounce 2s infinite;
+    }
 /* --- SECTION ABOUT ME --- */
 .about-me{
     width: 100%;
@@ -185,7 +208,7 @@ nav{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 30px auto;
+    margin: 0 auto;
 }
 
 .about-me-content{
@@ -363,7 +386,9 @@ nav{
     }
 }
 /* --- SECTION PROJETS ---*/
-
+.projets a {
+    text-decoration: none;
+}
 .projets {
     display: flex;
     flex-wrap: wrap;
@@ -371,32 +396,52 @@ nav{
 }
 
 .projet {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    transition: opacity 0.3s;
-    z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    height: 90vh;
-    width: 200px;
-    margin: 20px 10px;
+    overflow-x: hidden ;
     position: relative;
-    perspective: 1000px;
+    margin: 10px;
+    width: 200px;
+    height: 90vh;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    border: dashed var(--primary-color) 3px;
+    transition: transform 0.3s;
+}
+.projet_title{
+    font-family: 'Dancing_Script', sans-serif;
+    font-size: 4rem;
+    color: var(--purple-dark);
+    transition: opacity 0.3s;
+}
+
+.description-projet{
+    font-family: 'Dancing_Script', sans-serif;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.projet_title, .description-projet{
+    writing-mode: vertical-lr;
+    text-align: center;
+    padding: 5px;
+}
+
+.container_title_descrption{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
 }
 
 .contenu-projet {
+    z-index: 1;
+    width: 100%;
     height: 100%;
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s;
-    transform-style: preserve-3d;
 }
 
-.projet:hover .contenu-projet {
-    transform: rotateY(180deg);
+.image-projet img{
+    width: 70%;
+    height: 8rem;
 }
 
 .overlay {
@@ -406,48 +451,174 @@ nav{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+} 
+
+.contenu-survol img{
+    width: 50%;
+    height: 40vh;
 }
 
-.projet:hover .overlay {
-    display: block;
+.contenu-survol h2{
+    font-size: 4rem;
+    font-family: 'Dancing_script', sans-serif;
+    color: var(--purple-dark);
+}
+
+.contenu-survol p{
+    color: var(--primary-color);
+    max-width: 50%;
+    font-family: 'Raleway', sans-serif;
 }
 
 .contenu-survol {
-
-    position: absolute;
-    bottom: 100%; 
+    z-index: 50;
+    border: solid 2px var(--second-color);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
     left: 50%;
-    width: 100%;
-    z-index: 2;
+    transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
-    transition: opacity 0.3s;
+    pointer-events: none;
+    width: 75%;
+    max-width: calc(100% - 40px);
+    transition: opacity 0.3s ease, transform 0.5s ease; /* Ajout de transition pour le fondu et le mouvement */
+}
+/* SECTION SKILLS.*/
+/* Styles pour la section des compétences */
+.skills-section {
+    overflow-x: hidden;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+/* Style pour le titre "Compétences" */
+.skills-section h2 {
+    font-size: 4rem;
     text-align: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5); /* Ajout d'un fond semi-transparent */
-    padding: 10px;
-    transform: translateY(100%); /* Cacher le contenu en le déplaçant vers le bas */
-    transition: transform 0.5s;
+    color: var(--purple-dark);
+    font-family: 'Dancing_Script',sans-serif;
+    margin-bottom: 20px;
+    grid-column: 1 / -1;
 }
 
-.projet:hover .contenu-survol {
-    opacity: 1;
-     transform: translateY(0); /* Afficher le contenu en le déplaçant vers le haut */
-}
-
-.image-projet img {
-    max-width: 100%;
-    height: auto;
-}
-
-.projet_title {
-    font-size: 5rem;
-    font-family: 'Dancing_Script', sans-serif;
-    writing-mode: vertical-lr; /* Afficher le titre verticalement */
-    text-align: center;
+/* Style pour chaque compétence */
+.skill-list li {
     background-color: #f0f0f0;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
-    margin-right: -15px; /* Ajustement pour s'aligner avec le contenu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Effet de survol */
+.skill-list li:hover {
+    transform: translateY(-5px);
+}
+
+/* Style pour les titres de catégorie */
+.skill-list li:first-child {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+
+/* single post */
+
+article{
+    width: 100% !important;
+    height: 100vh !important;
+}
+
+.entry-title{
+    font-size: 4rem;
+    text-align: center;
+    color: var(--purple-dark);
+}
+.featured-image img{
+    width: 33rem;
+    height: 50vh;
+}
+.entry-content{
+    overflow-x: hidden;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.acf-description  h2{
+    overflow-x: hidden;
+    font-family: 'Raleway',sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+.acf-description  p{
+    overflow-x: hidden;
+    font-family: 'Raleway',sans-serif;
+    font-size: 1.2rem;
+    color: var(--black-color);
+    max-width: 600px;
+}
+.acf-contexte h2{
+    font-family: 'Raleway',sans-serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+.acf-contexte p{
+    font-family: 'Raleway',sans-serif;
+    font-size: 1.2rem;
+    color: var(--black-color);
+    max-width: 600px;
+}
+
+/* RESPONSIVE */
+
+@media only screen and (max-width: 1024px){
+    .items_banner h1{
+        font-size: 9rem;
+    }
+    .items_banner{
+        height: 55vh;
+    }
+    .banner{
+        height: 55vh;
+    } 
+}
+
+@media only screen and (max-width: 768px){
+    .items_banner h1{
+        font-size: 5rem;
+    }
+    .banner .items_banner{
+        height: 20vh;
+        background-image: none;
+    }
+    .banner{
+        height: 20vh;
+    } 
+
+    .writing-effect p{
+        font-size: 1rem;
+    }
+    header{
+        background-color: transparent;
+        border: none !important;
+    }
+    .projet{
+        height: 40vh;
+        width: 300px;
+    }
 }

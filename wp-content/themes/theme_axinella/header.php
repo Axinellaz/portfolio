@@ -9,32 +9,32 @@
 <body <?php body_class(); ?>>
     <header>
            
-        <div class="menu-icon" id="menuIcon">
-            <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger.png;' ?>" alt="Fleur">
-            <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger_close.png;' ?>" alt="Fleur de fermeture" class="hide">
+        <div class="menu-icon" id="flower-icon">
+            <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger.png;' ?>" alt="Flower 1">
+            <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger_close.png;' ?>" alt="Fleur 2">
         </div>
 
-        <div class="menu-icon">
-            <img src="<?php echo get_template_directory_uri() . '/imgs/menu_icone.png;' ?>" alt="Menu Burger">
-        </div>
 
-        <nav role="navigation" aria-label="<?php _e('Menu', 'text-domain'); ?>">
+        <div class="menu-burger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        
+
+        <nav class="menu navbar-scroll"  id="navbar"role="navigation" aria-label="<?php _e('Menu', 'text-domain'); ?>">
             <?php
                 $args = array(
                     'theme_location' => 'primary', 
                     'menu_class' => 'primary-menu', 
                     'container' => false, 
+                    'link_before' => '<span>', // Ajoutez un élément span avant chaque lien
+                    'link_after' => '</span>', // Fermez le span après chaque lien
                 );
                 wp_nav_menu($args);
             ?>
         </nav>
-        <div class="container_link_and_arrow_projet">
-            <div class="arrow-container">
-    <div class="arrow-down"></div>
-    <div class="arrow-down"></div>
-    <div class="arrow-down"></div>
-</div>
-            <a href="#projets">Projets</a>
+
         </div>
     </header>
 

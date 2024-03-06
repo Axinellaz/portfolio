@@ -25,4 +25,10 @@ function montheme_enqueue_scripts_js() {
 }
 add_action( 'wp_enqueue_scripts', 'montheme_enqueue_scripts_js' );
 
+// NOUVELLE TAILLE IMAGE
+add_action('after_setup_theme', 'custom_image_sizes');
+
+function custom_image_sizes() {
+    add_image_size('custom-thumbnail', 500, 500, true); // true pour recadrer l'image
+}
 

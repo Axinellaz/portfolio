@@ -1,12 +1,7 @@
-// JavaScript pour gérer le clic sur l'icône de menu
-        document.addEventListener("DOMContentLoaded", function() {
-            const menuIcon = document.getElementById("menuIcon");
-            const menuBurgerIcon = document.getElementById("menuBurgerIcon");
-            const menuLinks = document.getElementById("menuLinks");
+const menuBurger = document.querySelector('.menu-burger');
+const menu = document.querySelector('.menu');
 
-            menuIcon.addEventListener("click", function() {
-                menuLinks.classList.toggle("show");
-                menuIcon.classList.toggle("hide");
-                menuBurgerIcon.classList.toggle("hide");
-            });
-        });
+menuBurger.addEventListener('click', function() {
+    menu.classList.toggle('menu-open');
+    menuBurger.querySelectorAll('.bar').forEach(bar => bar.classList.toggle('open'));
+});
