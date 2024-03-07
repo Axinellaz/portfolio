@@ -1,4 +1,7 @@
-
+.site-main{
+    width: 100%;
+    min-height: 100vh;
+}
 html {
     font-size: 16px; /* Taille de police de base*/
 }
@@ -239,12 +242,12 @@ nav{
 }
 
 /* Effet Back Section About Me */
-#aboutme {
+#about-me {
     position: relative;
     overflow: hidden;
 }
 
-#aboutme::before, #aboutme::after {
+#about-me::before, #about-me::after {
     content: "";
     position: absolute;
     top: 0;
@@ -255,12 +258,12 @@ nav{
     animation: abstractShapes 25s linear infinite;
 }
 
-#aboutme::before {
+#about-me::before {
     left: 0;
     transform-origin: left;
 }
 
-#aboutme::after {
+#about-me::after {
     right: 0;
     transform-origin: right;
 }
@@ -490,64 +493,86 @@ nav{
     max-width: calc(100% - 40px);
     transition: opacity 0.3s ease, transform 0.5s ease; /* Ajout de transition pour le fondu et le mouvement */
 }
-/* SECTION SKILLS.*/
-/* Styles pour la section des compétences */
-.skills-section {
-    overflow-x: hidden;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-}
 
-/* Style pour le titre "Compétences" */
-.skills-section h2 {
+/* --- SECTION COMPETENCES --- */
+.competences{
+    margin-top: 50px;
+}
+.competences h2{
+    margin: 50px auto;
     font-size: 4rem;
-    text-align: center;
     color: var(--purple-dark);
-    font-family: 'Dancing_Script',sans-serif;
-    margin-bottom: 20px;
-    grid-column: 1 / -1;
+    text-align: center;
+    font-family: 'Dancing_Script', sans-serif;
 }
-
-/* Style pour chaque compétence */
-.skill-list li {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+.container_skills{
+    display: flex;
+        flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.7rem;
 }
+ .skills-section {
+            margin-bottom: 20px;
+            width: 23rem;
+        }
 
-/* Effet de survol */
-.skill-list li:hover {
-    transform: translateY(-5px);
-}
+        .skill-list {
+            list-style: none;
+            display: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Dancing_Script',sans-serif;
+            font-size: 1.7rem;
+            color: var(--primary-color);
+        }
 
-/* Style pour les titres de catégorie */
-.skill-list li:first-child {
-    font-weight: bold;
-    color: #666;
-    margin-bottom: 10px;
-}
+        .skill-list li{
+            padding: 10px;
+        }
+
+        .skill-list.active {
+            display: block;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            background-color: var(--purple-dark);
+            color: #fff;
+            border-width: 10px; 
+            border-style: solid; 
+            border-image: url('../imgs/back_menu_nav.jpg') 30 round;
+            padding: 10px 20px;
+            border-radius: 80px;
+            margin-bottom: 10px;
+            font-family: 'Raleway',sans-serif;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .toggle-button:hover {
+            background-color: var(--primary-color);
+        }
 
 
-/* single post */
+/* SINGLE POST PROJET */
 
 article{
-    width: 100% !important;
-    height: 100vh !important;
+    width: 99% !important;
+    min-height: 100vh !important;
 }
 
 .entry-title{
     font-size: 4rem;
     text-align: center;
     color: var(--purple-dark);
+    padding-bottom: 80px;
+    font-family: 'Dancing_Script',sans-serif;
 }
 .featured-image img{
     width: 33rem;
     height: 50vh;
+    border: var(--primary-color) solid 5px;
 }
 .entry-content{
     overflow-x: hidden;
@@ -557,6 +582,18 @@ article{
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container_acf{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
 }
 
 .acf-description  h2{
@@ -570,7 +607,8 @@ article{
     font-family: 'Raleway',sans-serif;
     font-size: 1.2rem;
     color: var(--black-color);
-    max-width: 600px;
+        max-width: 501px;
+    margin: 20px;
 }
 .acf-contexte h2{
     font-family: 'Raleway',sans-serif;
@@ -581,7 +619,8 @@ article{
     font-family: 'Raleway',sans-serif;
     font-size: 1.2rem;
     color: var(--black-color);
-    max-width: 600px;
+    max-width: 501px;
+    margin: 20px;
 }
 
 /* RESPONSIVE */
@@ -620,5 +659,26 @@ article{
     .projet{
         height: 40vh;
         width: 300px;
+    }
+    .skills-section {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .skill-list.active {
+        display: block;
+    }
+
+    .entry-title {
+        font-size: 3rem; /* Adjusted font size for smaller screens */
+    }
+    .featured-image img {
+        width: 100%; /* Ensures image takes full width on smaller screens */
+        height: auto; /* Maintains aspect ratio */
+    }
+    .acf-description p,
+    .acf-contexte p,
+    .acf-contexte a {
+        font-size: 1rem; /* Adjusted font size for smaller screens */
     }
 }

@@ -1,6 +1,13 @@
 console.log('ok')
 
+ const toggleButtons = document.querySelectorAll('.toggle-button');
+        const skillLists = document.querySelectorAll('.skill-list');
 
+        toggleButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                skillLists[index].classList.toggle('active');
+            });
+        });
 
 
 document.addEventListener("DOMContentLoaded", function() {

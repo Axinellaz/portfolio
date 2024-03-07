@@ -70,72 +70,97 @@
     endif;
     ?>
 </section>
-<section class="skills-section">
-    <h2>Compétences</h2>
-    <ul class="skill-list">
-        <li>Langages de programmation et technologies :</li>
-        <li>HTML/CSS</li>
-        <li>PHP</li>
-        <li>JavaScript</li>
-        <li>SQL</li>
-    </ul>
-    <ul class="skill-list">
-        <li>Frameworks et bibliothèques :</li>
-        <li>WordPress</li>
-        <li>jQuery</li>
-        <li>Bootstrap</li>
-        <li>React.js</li>
-    </ul>
-    <ul class="skill-list">
-        <li>Outils de développement :</li>
-        <li>Git</li>
-        <li>Visual Studio Code</li>
-        <li>Sass</li>
 
-    </ul>
-    <ul class="skill-list">
-        <li>Conception graphique :</li>
-        <li>Adobe Photoshop</li>
-        <li>Adobe Illustrator</li>
-        <li>Figma</li>
+<section class="competences" id="competences">
+    <h2>Mes Compétences</h2>
+    <div class="container_skills">
+        <div class="skills-section">
+                <h3 class="toggle-button">Langages de programmation et technologies</h3>
+                <ul class="skill-list">
+                    <li>HTML/CSS</li>
+                    <li>PHP</li>
+                    <li>JavaScript</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
 
-    </ul>
-    <ul class="skill-list">
-        <li>Gestion de projet :</li>
-        <li>Méthodologies Agile</li>
-        <li>Gestion du temps</li>
-        <li>Collaboration d'équipe</li>
-        <li>Résolution de problèmes</li>
-        <li>Communication efficace</li>
-    </ul>
+            <div class="skills-section">
+                <h3 class="toggle-button">Frameworks et bibliothèques</h3>
+                <ul class="skill-list">
+                    <li>WordPrediv
+                    <li>jQuery</li>
+                    <li>Bootstrap</li>
+                    <li>React.js</li>
+                </ul>
+            </div>
 
-    <ul class="skill-list">
-        <li>Référencement (SEO) :</li>
-        <li>Optimisation on-page</li>
-        <li>Recherche de mots-clés</li>
-        <li>Analyse de la concurrence</li>
-        <li>Link building</li>
-        <li>Suivi des performances</li>
-    </ul>
-    <ul class="skill-list">
-        <li>Systèmes de gestion de contenu (CMS) :</li>
-        <li>WordPress</li>
-    </ul>
-    <ul class="skill-list">
-        <li>Analyse et reporting :</li>
-        <li>Google Analytics</li>
-        <li>Google Search Console</li>
-    </ul>
-    <ul class="skill-list">
-        <li>Sécurité web :</li>
-        <li>Protection contre les attaques XSS</li>
-        <li>Cryptographie</li>
-        <li>Sécurité des mots de passe</li>
-        <li>Sécurisation des formulaires</li>
-        <li>Mise à jour et maintenance régulières</li>
-    </ul>
+            <div class="skills-section">
+                <h3 class="toggle-button">Outils de développement</h3>
+                <ul class="skill-list">
+                    <li>Git</li>
+                    <li>Visual Studio Code</li>
+                    <li>Sass</li>
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="toggle-button">Conception graphique</h3>
+                <ul class="skill-list">
+                    <li>Adobe Photoshop</li>
+                    <li>Adobe Illustrator</li>
+                    <li>Figma</li> 
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="toggle-button">Gestion de projet </h3>
+                <ul class="skill-list">
+                    <li>Méthodologies Agile</li>
+                    <li>Gestion du temps</li>
+                    <li>Collaboration d'équipe</li>
+                    <li>Résolution de problèmdiv
+                    <li>Communication efficace</li>
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="toggle-button">Référencement (SEO)</h3>
+                <ul class="skill-list">
+                    <li>Optimisation on-page</li>
+                    <li>Recherche de mots-clés</li>
+                    <li>Analyse de la concurrence</li>
+                    <li>Link building</li>
+                    <li>Suivi des performances</li> 
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="toggle-button">Systèmes de gestion de contenu (CMS)</h3>
+                <ul class="skill-list"> 
+                    <li>WordPress</li>
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="toggle-button">Analyse et reporting</h3>
+                <ul class="skill-list"> 
+                    <li>Google Analytics</li>
+                    <li>Google Search Console</li>
+                </ul>
+            </div>
+
+            <div class="skills-section">
+                <h3 class="toggle-button">Sécurité web</h3>
+                <ul class="skill-list"> 
+                    <li>Protection contre les attaques XSS</li>
+                    <li>Cryptographie</li>
+                    <li>Sécurité des mots de passe</li>
+                    <li>Sécurisation des formulaires</li>
+                    <li>Mise à jour et maintenance régulières</li>
+                </ul>
+            </div>
+    </div>
 </section>
-
 
 
 <?php get_footer() ?>
