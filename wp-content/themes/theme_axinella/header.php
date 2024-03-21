@@ -8,11 +8,6 @@
 </head>
 <body <?php body_class(); ?>>
     <header>
-           
-        <div class="menu-icon" id="flower-icon">
-            <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger.png;' ?>" alt="Flower 1">
-            <img src="<?php echo get_template_directory_uri() . '/imgs/flower_menu_burger_close.png;' ?>" alt="Fleur 2">
-        </div>
 
 
         <div class="menu-burger">
@@ -38,4 +33,4 @@
         </div>
     </header>
 
-    <div id="content" class="site-content">
+    <div id="content" class="site-content parallax-container">

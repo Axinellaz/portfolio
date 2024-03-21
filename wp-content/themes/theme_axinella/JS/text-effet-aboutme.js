@@ -1,31 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const aboutMeSection = document.getElementById('aboutme');
-    const aboutMeContent = document.querySelector('.about-me-content');
-
-    // Fonction pour vérifier si la section "About Me" est dans la vue
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
-
-    // Fonction pour déclencher l'animation lorsque la section "About Me" est dans la vue
-    function animateAboutMe() {
-        if (isInViewport(aboutMeSection)) {
-            aboutMeSection.classList.add('visible');
-            window.removeEventListener('scroll', animateAboutMe); // Arrêter l'écouteur d'événements une fois que l'animation est déclenchée
-        }
-    }
-
-    // Écouter le défilement de la fenêtre et déclencher l'animation lorsque la section "About Me" est dans la vue
-    window.addEventListener('scroll', animateAboutMe);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour effectuer l'effet d'écriture
     function typeWriterEffect(textElement, index, delay) {
         setTimeout(function() {
@@ -49,16 +22,44 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
 
-    // Appeler l'effet d'écriture pour chaque phrase
-    let phrases = document.querySelectorAll('.writing-effect p');
-    let delay = 0;
-    phrases.forEach(function(phrase, index) {
-        typeWriterEffect(phrase, index, delay);
-        delay += 2000; // Délai entre chaque phrase, en millisecondes
-    });
+    // Fonction pour observer la section "About Me" et déclencher les animations
+    function observeAboutMe(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Démarrer l'effet d'écriture sur le titre "About Me"
+                let aboutMeTitle = document.getElementById('about-me-title');
+                aboutMeTitle.classList.add('writing-effect');
+                typeWriterEffect(aboutMeTitle, 0, 0);
 
-    // Ajouter une classe pour l'effet d'écriture sur le titre "About Me"
-    let aboutMeTitle = document.getElementById('about-me-title');
-    aboutMeTitle.classList.add('writing-effect');
-    typeWriterEffect(aboutMeTitle, 0, 0);
+                // Démarrer l'effet d'écriture sur chaque paragraphe "Writing Effect"
+                let phrases = document.querySelectorAll('.writing-effect p');
+                let delay = 0;
+                phrases.forEach(function(phrase, index) {
+                    typeWriterEffect(phrase, index, delay);
+                    delay += 2000; // Délai entre chaque phrase, en millisecondes
+                });
+
+                // Démarrer l'animation de la bulle de pensée
+                const thoughtBubble = document.querySelector('.thought-bubble');
+                thoughtBubble.classList.add('drawBubble');
+
+                // Arrêter d'observer une fois que l'animation a commencé
+                observer.unobserve(entry.target);
+            }
+        });
+    }
+
+    // Créer un observateur pour la section "About Me"
+    let options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 // Détecte lorsque 50% de la section est visible
+    };
+
+    let observer = new IntersectionObserver(observeAboutMe, options);
+
+    // Observer la section "About Me"
+    let aboutMeSection = document.getElementById('about-me');
+    observer.observe(aboutMeSection);
 });
+

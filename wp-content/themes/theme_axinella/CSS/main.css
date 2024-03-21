@@ -39,6 +39,7 @@ html {
 
 }
 
+
 /*  --- HEADER ---  */
 header{
     overflow-x: hidden;
@@ -95,20 +96,14 @@ nav{
 }
 /*  --- Menu Burger Flower & Menu Icon --- */
 .menu-icon {
-    cursor: pointer;
     width: 45px;
     height: 45px;
-    position: relative;
+    display: flex;
 }
 
 .menu-icon img{
-    width: 3rem;
-    height: 3rem;
-}
-
-/* Afficher la deuxième fleur par défaut */
-#flower-icon img:last-child {
-    display: none;
+    width: 7rem;
+    height: 7rem;
 }
 
 /* Animation de rotation au survol */
@@ -159,15 +154,21 @@ nav{
 /*  --- PAGE ACCUEIL / BANNER ---  */
 .banner{
     width: 100%;
+    position: relative;
+    overflow: hidden;
     height: 100vh;
 }
 .banner .items_banner{
     width: 100%;
     height: 100vh;
     background-image: url('../imgs/background_banner.jpg');
-     background-size: cover; /* Redimensionne l'image pour couvrir toute la zone de l'arrière-plan */
+    background-size: cover; /* Redimensionne l'image pour couvrir toute la zone de l'arrière-plan */
     background-position: center; 
     overflow-x: hidden; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .items_banner h1{
@@ -180,71 +181,95 @@ nav{
 }
 
 /* aNIMATION TITLE H1 */
-.animate-text {
-    overflow: hidden;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    .show {
-      opacity: 1;
-    }
 
-     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-30px);
-      }
-      60% {
-        transform: translateY(-15px);
-      }
+.animate-text span {
+    opacity: 0; /* Masquer chaque lettre initialement */
+    transition: opacity 5s ease-in-out; /* Ajouter une transition pour une apparition en douceur de chaque lettre */
+}
+
+.flowers {
+    position: fixed;
+    top: 50%; 
+    left: 0; 
+}
+
+.flower {
+    position: absolute;
+    top: 50%; 
+    background-color: var(--second-color); 
+    border-radius: 50%;
+    opacity: 0; 
+    animation: moveFlower 5s linear forwards;
+}
+.flower:nth-child(2) {
+    left: 25vw; 
+}
+
+.flower:nth-child(3) {
+    left: 50vw; 
+}
+
+/* Animation de la fleur */
+@keyframes moveFlower {
+    0% {
+        left: -50px; 
     }
-    .animate-text {
-      animation: bounce 2s infinite;
+    100% {
+        left: 100vw; 
     }
+}
+
+
 /* --- SECTION ABOUT ME --- */
-.about-me{
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+.about-me {
+    position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.about-me-content{
-    flex-direction: column;
-    display: flex;
-    gap: 2rem;
-
-}
-.about-me-content h2{
-    font-family: 'Dancing_Script', sans-serif;
+.about-me h2{
+    position: absolute;
+    top: 0;
+    text-align: center;
     font-size: 4rem;
-    letter-spacing: 0.3rem;
-    text-align: center;
-    border: solid 3px ;
-    color: var(--primary-color);
+    color: var(--purple-dark);
+    font-family: 'Dancing_Script', sans-serif;
 }
 
-.writing-effect p{
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.5rem;
-    color: var(--second-color);
+.writing-effect{
+    margin-bottom: 50px;
 }
 
-.description_aboume{
-        max-width: 35rem;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
+.writing-effect p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem;
+  color: var(--second-color);
+  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  overflow: hidden;
+  animation: scrollText 20s linear infinite; 
+  text-shadow: 3px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation du défilement horizontal */
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%); /* Démarre le texte hors de la vue à droite */
+  }
+  100% {
+    transform: translateX(-100%); /* Défile le texte jusqu'à gauche */
+  }
 }
 
 /* Effet Back Section About Me */
 #about-me {
     position: relative;
     overflow: hidden;
+    height: 70vh;
 }
 
 #about-me::before, #about-me::after {
@@ -291,6 +316,52 @@ nav{
     }
 }
 
+/* -- Last <p> - ABOUT ME -- */
+.description_aboume{
+   color: var(--purple-dark);
+    font-family: 'Raleway', sans-serif; 
+}
+.thought-bubble {
+  position: relative;
+  max-width: 60rem;
+  background-color: #f1f1f1; 
+  border-radius: 20px; 
+  padding: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  overflow: hidden; 
+}
+
+.thought-bubble::before {
+  content: '';
+  position: absolute;
+  width: 100%; 
+  height: 100%; 
+  background-color: transparent;
+  border-radius: 20px; 
+  top: 0px; 
+  left: 0px; 
+  box-sizing: border-box;
+  clip-path: inset(0 0 100% 0); 
+  overflow-x: hidden;
+  border: 2px dashed var(--purple-dark);
+  transition: all 1s ease-in-out;
+}
+
+.thought-bubble.drawBubble::before {
+    overflow-x: hidden;
+  animation: drawBubble 5s linear forwards;
+}
+
+@keyframes drawBubble {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    border-width: 0;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    border-width: 2px;
+  }
+}
 
 /* --- SECTION CONTACT --- */ 
 .contact{
@@ -635,6 +706,10 @@ article{
     .banner{
         height: 55vh;
     } 
+    .menu-icon img {
+        width: 3rem;
+        height: 3rem;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -649,6 +724,14 @@ article{
         height: 20vh;
     } 
 
+    .menu-icon img{
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .flowers{
+        top: 18%;
+    }
     .writing-effect p{
         font-size: 1rem;
     }

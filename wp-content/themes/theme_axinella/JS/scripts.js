@@ -1,5 +1,5 @@
 console.log('ok')
-
+// SECTION COMPETENCES 
  const toggleButtons = document.querySelectorAll('.toggle-button');
         const skillLists = document.querySelectorAll('.skill-list');
 
@@ -9,7 +9,7 @@ console.log('ok')
             });
         });
 
-
+// SECTION PROJETS
 document.addEventListener("DOMContentLoaded", function() {
     const projets = document.querySelectorAll('.projet');
     projets.forEach(projet => {
@@ -57,23 +57,43 @@ document.addEventListener('DOMContentLoaded', generateBubbles);
 
 // ANIMATION H1
 document.addEventListener("DOMContentLoaded", function() {
-    var h1 = document.querySelector('.animate-text');
-    setTimeout(function() {
-      h1.classList.add('show');
-    }, 500);
-  });
+    const text = document.querySelector(".animate-text");
+    const letters = text.textContent.split(""); // Séparer le texte en lettres individuelles
+    text.textContent = ""; // Effacer le texte initial
+    
+    // Parcourir chaque lettre et les placer dans des spans avec une opacité initiale de 0
+    letters.forEach(letter => {
+        const span = document.createElement("span");
+        span.textContent = letter;
+        text.appendChild(span);
+    });
+
+    // Définir un délai progressif pour l'apparition de chaque lettre
+    let delay = 0.8;
+    text.querySelectorAll("span").forEach((span, index) => {
+        setTimeout(() => {
+            span.style.opacity = 1;
+        }, delay);
+        delay += 0.2; // Délai entre chaque lettre (100 millisecondes)
+    });
+
+    
+});
 
 
-// ANIMATION FLEUR NAVBAR 
-document.addEventListener('DOMContentLoaded', function() {
-    const flowerIcon = document.getElementById('flower-icon');
-    console.log(flowerIcon);
+document.addEventListener("DOMContentLoaded", function() {
 
-    flowerIcon.addEventListener('click', function() {
-        const flowerImages = this.querySelectorAll('img');
-        flowerImages.forEach(img => img.classList.toggle('hidden'));
+    const flowers = document.querySelectorAll(".flower");
+    let delay = 0;
+
+    flowers.forEach((flower, index) => {
+        setTimeout(function() {
+            flower.style.opacity = 1;
+        }, delay);
+        delay += 2000; // Ajouter un délai entre chaque fleur (1 seconde = 1000 millisecondes)
     });
 });
+
 
 // CHEMIN LIENS MENU NAV
 document.addEventListener("DOMContentLoaded", function() {
@@ -90,3 +110,13 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(text);
     });
 });
+
+// PARALLAX SECTION 
+var rellax = new Rellax('.parallax-section', {
+    speed: -2, // Adjust the speed as per your preference
+    center: false,
+    wrapper: null,
+    round: true,
+    vertical: true,
+    horizontal: false
+  });

@@ -17,6 +17,15 @@ function montheme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'montheme_enqueue_styles' );
 
+// DECLARATION LIBRAIRIE EFFET PARALLAX
+
+function enqueue_rellax_script() {
+    // Enregistrer Rellax.js depuis le CDN
+    wp_enqueue_script('rellax', 'https://unpkg.com/rellax@latest/dist/rellax.min.js', array(), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_rellax_script');
+
+
 // DECLARTION FICHIER JS
 function montheme_enqueue_scripts_js() {
     wp_enqueue_script( 'scripts', get_template_directory_uri() . '/JS/scripts.js', array( 'jquery' ), '1.0', true);
