@@ -56,24 +56,27 @@
                 $acf_description_projet = get_field('description_projets');
                 $acf_contexte_projet = get_field('contexte_projets');
         ?>
-            <a href="<?php echo $single_post_url; ?>" class="projet">
-                <div class="projet">
-                    <div class="contenu-projet">
-                        <div class="container_title_descrption">
-                            <h2 class="projet_title"><?php the_title(); ?></h2>
 
-                            <p class="description-projet"><?php echo wp_trim_words($acf_description_projet, 20); ?></p>
+                <a href="<?php echo $single_post_url; ?>" class="projet_container_link">
+                    <div class="projet">
+                        <div class="profondeur"></div>
+                        <div class="contenu-projet">
+                            <div class="container_title_descrption">
+                                <h2 class="projet_title"><?php the_title(); ?></h2>
+
+                                <p class="description-projet"><?php echo wp_trim_words($acf_description_projet, 20); ?></p>
+                            </div>
                         </div>
+                        <div class="overlay"></div>
                     </div>
-                    <div class="overlay"></div>
-                </div>
-                    <div class="contenu-survol">
-                        <img src="<?php echo $image_url; ?>">
-                        <h2><?php the_title() ?></h2> 
-                        <p><?php echo wp_trim_words($acf_description_projet, 20); ?></p> 
-                        <p><?php echo wp_trim_words($acf_contexte_projet, 20);?></p> 
-                    </div>
-            </a>
+                        <div class="contenu-survol">
+                            <img src="<?php echo $image_url; ?>">
+                            <h2><?php the_title() ?></h2> 
+                            <p><?php echo wp_trim_words($acf_description_projet, 20); ?></p> 
+                            <p><?php echo wp_trim_words($acf_contexte_projet, 20);?></p> 
+                        </div>
+                </a>
+
         <?php
             endwhile;
             wp_reset_postdata(); // Réinitialiser les données de la requête
